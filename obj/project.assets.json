@@ -1419,6 +1419,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Avalonia >= 11.2.1",
+      "Avalonia.Controls.DataGrid >= 11.2.1",
       "Avalonia.Desktop >= 11.2.1",
       "Avalonia.Diagnostics >= 11.2.1",
       "Avalonia.Fonts.Inter >= 11.2.1",
@@ -1431,11 +1432,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/bigem/RiderProjects/bios_vil3/bios_vil3.csproj",
+      "projectUniqueName": "/home/bigem/RiderProjects/biolvis33/bios_vil3.csproj",
       "projectName": "bios_vil3",
-      "projectPath": "/home/bigem/RiderProjects/bios_vil3/bios_vil3.csproj",
+      "projectPath": "/home/bigem/RiderProjects/biolvis33/bios_vil3.csproj",
       "packagesPath": "/home/bigem/.nuget/packages/",
-      "outputPath": "/home/bigem/RiderProjects/bios_vil3/obj/",
+      "outputPath": "/home/bigem/RiderProjects/biolvis33/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/bigem/.nuget/NuGet/NuGet.Config"
@@ -1462,13 +1463,17 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
           "Avalonia": {
+            "target": "Package",
+            "version": "[11.2.1, )"
+          },
+          "Avalonia.Controls.DataGrid": {
             "target": "Package",
             "version": "[11.2.1, )"
           },
@@ -1500,12 +1505,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[9.0.3, 9.0.3]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/bigem/.dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/var/run/host/usr/share/dotnet/sdk/9.0.104/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

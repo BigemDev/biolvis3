@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/3qqdE1DCQU=",
+  "dgSpecHash": "N9IgQ8J8oms=",
   "success": true,
-  "projectFilePath": "/home/bigem/RiderProjects/bios_vil3/bios_vil3.csproj",
+  "projectFilePath": "/home/bigem/RiderProjects/biolvis33/bios_vil3.csproj",
   "expectedPackageFiles": [
     "/home/bigem/.nuget/packages/avalonia/11.2.1/avalonia.11.2.1.nupkg.sha512",
     "/home/bigem/.nuget/packages/avalonia.angle.windows.natives/2.1.22045.20230930/avalonia.angle.windows.natives.2.1.22045.20230930.nupkg.sha512",
@@ -32,7 +32,8 @@
     "/home/bigem/.nuget/packages/skiasharp.nativeassets.webassembly/2.88.8/skiasharp.nativeassets.webassembly.2.88.8.nupkg.sha512",
     "/home/bigem/.nuget/packages/skiasharp.nativeassets.win32/2.88.8/skiasharp.nativeassets.win32.2.88.8.nupkg.sha512",
     "/home/bigem/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512",
-    "/home/bigem/.nuget/packages/tmds.dbus.protocol/0.20.0/tmds.dbus.protocol.0.20.0.nupkg.sha512"
+    "/home/bigem/.nuget/packages/tmds.dbus.protocol/0.20.0/tmds.dbus.protocol.0.20.0.nupkg.sha512",
+    "/home/bigem/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.3/microsoft.aspnetcore.app.ref.9.0.3.nupkg.sha512"
   ],
   "logs": []
 }
