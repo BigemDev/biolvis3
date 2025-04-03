@@ -1,11 +1,18 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Xml.Serialization;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization.Json;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using Avalonia.Media;
 
 namespace bios_vil3
 {
@@ -76,6 +83,64 @@ namespace bios_vil3
             }
         }
 
+        private async void SaveXmlButton_Click(object sender, RoutedEventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog
+            {
+                Title = "Zapisz plik XML",
+                Filters = new List<FileDialogFilter>
+                    { new FileDialogFilter { Name = "XML files", Extensions = { "xml" } } }
+            };
+
+            var result = await saveFileDialog.ShowAsync(this);
+
+            if (!string.IsNullOrEmpty(result))
+            {
+                var osoby = Employees.Select(emp => new Osoba
+                {
+                    Id = emp.Id,
+                    FirstName = emp.FirstName,
+                    LastName = emp.LastName,
+                    Age = emp.Age,
+                    Position = emp.Position
+                }).ToList();
+
+                var serializer = new XmlSerializer(typeof(List<Osoba>));
+                using (var writer = new StreamWriter(result))
+                {
+                    serializer.Serialize(writer, osoby);
+                }
+            }
+        }
+
+        private async void SaveJSONButton_Click(object sender, RoutedEventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog
+            {
+                Title = "Zapisz plik JSON",
+                Filters = new List<FileDialogFilter> { new FileDialogFilter { Name = "JSON files", Extensions = { "json" } } }
+            };
+
+            var result = await saveFileDialog.ShowAsync(this);
+
+            if (!string.IsNullOrEmpty(result))
+            {
+                var osoby = Employees.Select(emp => new Osoba
+                {
+                    Id = emp.Id,
+                    FirstName = emp.FirstName,
+                    LastName = emp.LastName,
+                    Age = emp.Age,
+                    Position = emp.Position
+                }).ToList();
+
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string jsonString = JsonSerializer.Serialize(osoby, options);
+        
+                await File.WriteAllTextAsync(result, jsonString);
+            }
+        }
+
         private async Task SaveToCsvAsync(string filePath)
         {
             using (var writer = new StreamWriter(filePath))
@@ -111,6 +176,76 @@ namespace bios_vil3
                     }
                 }
             }
+        }
+
+        private async void LoadJsonButton_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog
+            {
+                Title = "Wczytaj plik JSON", Filters = new List<FileDialogFilter>
+                {
+                    new FileDialogFilter { Name = "JSON files", Extensions = { "json" } }
+                }, AllowMultiple = false
+            }; 
+            var result = await openFileDialog.ShowAsync(this); 
+            if (result != null && result.Length > 0) { string filePath = result[0];
+                try
+                {
+                    string jsonString = await File.ReadAllTextAsync(filePath);
+                    var osoby = JsonSerializer.Deserialize<List<Osoba>>(jsonString);
+                    if (osoby != null)
+                    {
+                        Employees.Clear();
+                        foreach (var osoba in osoby)
+                        {
+                            Employees.Add(new Employee
+                            {
+                                Id = osoba.Id, FirstName = osoba.FirstName, LastName = osoba.LastName, Age = osoba.Age,
+                                Position = osoba.Position
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LoadJSONButton.Background=Brushes.Red;
+                } }
+        }
+
+        private async void LoadXmlButton_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog
+            {
+                Title = "Wczytaj plik XML", Filters = new List<FileDialogFilter>
+                {
+                    new FileDialogFilter { Name = "XML files", Extensions = { "xml" } }
+                }, AllowMultiple = false
+            }; var result = await openFileDialog.ShowAsync(this); 
+            if (result != null && result.Length > 0) { string filePath = result[0];
+                try
+                {
+                    var serializer = new XmlSerializer(typeof(List<Osoba>));
+                    using (var reader = new StreamReader(filePath))
+                    {
+                        var osoby = (List<Osoba>)serializer.Deserialize(reader);
+                        if (osoby != null)
+                        {
+                            Employees.Clear();
+                            foreach (var osoba in osoby)
+                            {
+                                Employees.Add(new Employee
+                                {
+                                    Id = osoba.Id, FirstName = osoba.FirstName, LastName = osoba.LastName,
+                                    Age = osoba.Age, Position = osoba.Position
+                                });
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LoadXmlButton.Background = Brushes.Red;
+                } }
         }
     }
 }
