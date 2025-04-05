@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bios_vil3")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef0e79bc8f22b588f1693b56c75b432dc26df70c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0c774f729cbf4d729f85835a4b6f6a877dfc55a")]
 [assembly: System.Reflection.AssemblyProductAttribute("bios_vil3")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bios_vil3")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

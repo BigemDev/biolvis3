@@ -38,7 +38,7 @@
             <StackPanel Orientation="Horizontal">
             <Button x:Name="SaveXmlButton" Content="Zapis do XML" Margin="5" Click="SaveXmlButton_Click"/>
             <Button x:Name="SaveJSONButton" Content="Zapis do JSON" Margin="5" Click="SaveJSONButton_Click" />
-            <Button x:Name="LoadXmlButton" Content="Odczyt z XML" Margin="5" Click="LoadJsonButton_Click"/>
+            <Button x:Name="LoadXmlButton" Content="Odczyt z XML" Margin="5" Click="LoadXmlButton_Click"/>
             <Button x:Name="LoadJSONButton" Content="Odczyt z JSON" Margin="5" Click="LoadJsonButton_Click"/>
             </StackPanel>
             
